@@ -1,0 +1,232 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-grille {
+    height: 100vh;  
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+} 
+
+
+header {
+    grid-column: span 3; /* prendre 3 espace (span) pour s etendre sur les 3 colonnes 200px+1fr+200px */
+    padding: 40px;
+    font-family: fantasy;
+    text-align: center;
+    font-size: 25px;
+    background-color: #be174f;
+    color: #fff;
+    position: relative;
+    animation-name: headerAnimation;
+    animation-duration: 4s;
+}
+ 
+ 
+@keyframes  headerAnimation {
+    from {background-color : #be174f;}
+    to {background-color: rgb(228, 161, 213);}
+  }
+  #photoEco {
+    height: 100px;
+    border-radius: 50%;
+    position :absolute;
+    left:0; 
+    top : 10px;
+}
+main {
+    padding: 30px;
+}
+ h2{
+
+  position: relative;
+  animation-name: h2Animation;
+  animation-duration: 4s;
+
+ }
+ @keyframes h2Animation {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:40px;}
+    75%  {background-color:green; left:0px; top:40px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
+  #photoEco2{
+      height: 150px;
+
+  }
+  #photoEco3{
+    height: 150px;
+
+}
+#photoEco4{
+    height: 150px;
+
+}
+.photos{
+    padding: 15px;
+    background-color: rgb(170, 214, 126);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 50px;
+
+}
+
+nav {
+    background-color: #aeef36;
+    animation-name: navAnimation;
+    animation-duration: 4s;
+}
+@keyframes navAnimation {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+  }
+
+.liste-sidenav {
+    list-style-type: none; /* pour enlever les */
+    max-height: 750px; /* ?????*/
+    display: flex;
+    flex-direction: column;
+}
+
+.liste-sidenav li {
+    height: 70px;
+    display: flex;
+    justify-content: center; /*aligner l'objet sur l'axe principal x*/
+    align-items: center /*aligner l'objet sur l'axe secondaire y*/
+}
+
+.liste-sidenav li a {
+    font-size: 18px;
+    color: #da1b1b;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+aside {
+    padding: 20px;
+    background-color: #edb88b;
+    font-size: 22px;
+    color: #333;
+}
+
+aside p {
+    height: 750px; /* pour eviter qu on puisse reduire den bas au dela de 750 px ????? */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    grid-column: span 3;
+    padding: 30px;
+    text-align: center;
+    font-size: 20px;
+    background-color: #2e282a;
+    color: #fff;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /*z-index: 1;  Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    /*background-color: rgb(250, 8, 129); Fallback color 
+    background-color: rgba(0,0,0,0.4);  Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #4eda71;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid rgb(31, 100, 22);
+    width: 40%;
+    
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* BARRE DE PROGRESSION */
+  .progress_bar{
+    height : 10px; 
+    position: fixed;
+    background-color: rgb(8, 8, 8);
+    top : 0; 
+    left:0;
+    right: 0;
+    }
+    
+    .pourcentage{
+    background-color: cadetblue;
+    padding: 10px;
+    font-size: 10 em;
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    
+    }
+
+/* on applique les media pour un ecran inf a 576 px*/
+@media (max-width: 576px) { 
+
+    .container-grille {
+        display: flex;
+        flex-direction: column;
+    }
+    aside p{ 
+
+        height : auto ;
+    }
+    
+    .liste-sidenav {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .liste-sidenav li {
+        margin: 0 10px; /*   0 px en haut et en bas ; 10px a gauche et a dte*/
+    }
+    main p {
+        min-height: 610px; /*  hauteur min pour le parag*/
+    }
+    .photos{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+
+}  

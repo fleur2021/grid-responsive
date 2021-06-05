@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple CSS Grid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container-grille">
+
+        <header>
+             
+            <h2>Blog Lorem Ipsum</h2>
+            <img src="./photo1.jpg" alt="Ecologique" id ="photoEco">
+
+        </header>
+        <nav>
+            <ul class="liste-sidenav">
+                <li><a href="#">Lorem</a></li>
+                <li><a href="#">Lorem</a></li>
+                <li><a href="#">Lorem</a></li>
+                <li><a href="#">Lorem</a></li>
+                <li><a href="#">Lorem</a></li>
+            </ul>
+        </nav>
+
+
+        <main>
+
+            <h1>Contenu principal</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae labore voluptate exercitationem esse placeat fugit suscipit id consequatur nam incidunt quaerat recusandae, cumque minima earum culpa dignissimos quasi nemo dolores sint possimus iure. Vel quae deserunt voluptate, nulla nihil deleniti, praesentium nostrum ut architecto maxime fugit earum laboriosam! Harum, ea dolorum a, asperiores ad est, facere quam minima ipsum sequi maxime veniam nam itaque? Recusandae dicta labore eum. Sapiente itaque ipsum sed repellendus, sequi quaerat impedit! Quisquam suscipit aut, amet saepe, voluptate harum itaque eum sapiente molestias, ratione modi necessitatibus minus doloremque voluptates mollitia blanditiis illo velit earum expedita nobis voluptatem? Ipsam maxime excepturi magnam eligendi sunt dicta, quos id magni aspernatur, hic, natus veritatis? Rerum autem iste iure, expedita impedit esse doloribus dolorum earum, sapiente dicta tenetur eius officia molestiae enim blanditiis. Suscipit praesentium adipisci temporibus sunt excepturi ut optio enim repudiandae doloremque deleniti veniam hic ipsum, ipsa illum eum quidem perferendis expedita, sed eos nobis eaque. Modi dolores voluptas deleniti suscipit harum corporis quam. Reiciendis, dolorum illo, quidem vel quam nobis recusandae praesentium molestias consectetur ducimus beatae harum nisi accusamus aliquid quas deserunt dolor? Pariatur fugiat corporis impedit consequuntur corrupti nostrum reiciendis blanditiis dignissimos eaque, illum voluptas quod.
+            </p>
+            <div class="photos">
+                <img src="./photo2.jpg" alt="Ecologique" id ="photoEco2">
+                <img src="./photo3.jpg" alt="Ecologique" id ="photoEco3">
+                <img src="./photo4.jpg" alt="Ecologique" id ="photoEco4"> 
+            </div>
+             <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>  
+                    <p>Maison écologique : 5 points clés pour bien éco-construire</p>
+                </div>
+            </div>
+        </main>
+        <aside>
+            <p>
+                AUDIT SEO
+            </p>
+        </aside>
+        <footer>Footer</footer>
+    </div>
+     <!-- barre de progression  -->
+    <div class ="progress_bar"></div>
+ 
+    <divc class = "pourcentage"> <span></span> %</div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var photo2 = document.getElementById("photoEco2");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        photo2.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        // BARRE DE PROGRESSION 
+        const progressBar = document.querySelector(".progress_bar");
+progressBar.style.display = "none" ; // qd on arrive sur le site la barre de progression n'apparait pas 
+const affichagePourcentage = document.querySelector(".pourcentage span");
+affichagePourcentage.innerHTML="0";
+
+
+// fonction handlescroll flechée ; elle doit etre declaré avant le addEventListener 
+let handleScroll = () =>  {
+    progressBar.style.display ="block" ; 
+    const height = document.body.scrollHeight; // mesure de la hauteur du contenu de mon body : la taille de mon site
+    //alert( height);
+    const windowHeight = window.innerHeight ; // la taille de l'affichage de mon navigateur 
+    // alert (windowHeight);
+    const position = window.pageYOffset; // le nombre de pixels que le document a déjà fait défiler  la fenêtre verticalement
+    const heightHidden = height - windowHeight; // calculer la partie qu'il me reste a afficher 
+    let pourcentage = Math.floor((position/heightHidden) * 100) ;
+    //console.log(pourcentage);
+   
+    progressBar.style.right = 100 - pourcentage +"%"; 
+    if (pourcentage>=100){
+        pourcentage = 100;
+    }
+    affichagePourcentage.innerHTML= pourcentage 
+    
+}
+// detection  di scroll **
+window.addEventListener("scroll", handleScroll);
+
+        </script>
+</body>
+</html>
